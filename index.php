@@ -11,15 +11,29 @@ include_once 'application/config/db.php';
 class App {
 
     function __construct() {
-        $this->db = MysqliDb::getInstance();
+        $this->db(); // create db instance
+        $this->load(); // create load class instace 
     }
 
-    function index() {
-        echo 'in app class';
+    function db() {
+        try {
+            global $dbconfig;
+
+            $this->db = new MysqliDb($dbconfig);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    function load() {
+        $this->load = new Load();
     }
 
 }
 
+echo '<pre>';
+print_r($_SERVER);
+echo '</pre>';
 try {
 //    use  as Login;
     $app = new Login();

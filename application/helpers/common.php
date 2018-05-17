@@ -20,3 +20,7 @@ function __autoload($class_name) {
         require_once $file_name;
     }
 }
+
+function testx() {
+    echo 'testx';
+}

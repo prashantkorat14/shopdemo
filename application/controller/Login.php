@@ -20,14 +20,16 @@ class Login extends App {
     //put your code here
     function __construct() {
 //        $this->db = MysqliDb::getInstance();
+        parent::__construct();
     }
 
     function index() {
         echo '<pre>';
         print_r($this->db->get('users'));
         echo '</pre>';
-        echo 'here';
-//        Load::view('login');
+//        echo 'here';
+        $this->load->view('login');
+        testx();
     }
 
 }
